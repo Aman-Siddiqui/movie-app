@@ -7,10 +7,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'http://localhost:3000', // React frontend
+    origin: 'http://localhost:3000', 
   });
 
-  // Serve uploaded images
   const uploadDir = process.env.UPLOAD_DIR || 'uploads';
   app.use('/uploads', express.static(join(process.cwd(), uploadDir)));
 

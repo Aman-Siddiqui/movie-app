@@ -18,15 +18,15 @@ export default function Login() {
       const res = await api.post('/auth/login', { email, password });
       const token = res.data?.access_token;
       if (token) {
-        // save token
+       
         if (remember) localStorage.setItem('token', token);
         else sessionStorage.setItem('token', token);
 
-        // set default auth header for future calls
+       
         setAuthToken(token);
 
-        // redirect to movies list (create this later)
-        navigate('/movies'); // you can change target later
+       
+        navigate('/movies'); 
       } else {
         setError('Invalid server response');
       }
@@ -37,7 +37,7 @@ export default function Login() {
     }
   };
 
-  // If a stored token exists, set it (so dev won't re-login each refresh)
+ 
   React.useEffect(() => {
     const t = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (t) setAuthToken(t);
@@ -46,7 +46,7 @@ export default function Login() {
   return (
     <div className="app-bg flex items-center justify-center min-h-screen">
       <div className="absolute inset-0 pointer-events-none">
-        {/* optional decorative shapes at bottom */}
+      
         <div className="wave" />
       </div>
 

@@ -13,7 +13,6 @@ async function bootstrap() {
   const email = 'admin_new@example.com';
   const password = 'SecurePass!2025';
 
-  // Check if user already exists
   const existingUser = await userRepository.findOne({ where: { email } });
   if (existingUser) {
     console.log('⚠️ User already exists:', email);
@@ -21,10 +20,8 @@ async function bootstrap() {
     return;
   }
 
-  // Hash the password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create and save new user
   const user = userRepository.create({
     email,
     password: hashedPassword,

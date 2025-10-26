@@ -9,8 +9,7 @@ const EditMovie = () => {
   const [posterFile, setPosterFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
-  // Fetch existing movie details
-  useEffect(() => {
+   useEffect(() => {
     const fetchMovie = async () => {
       try {
         const token =
@@ -65,7 +64,7 @@ const EditMovie = () => {
           body: formData,
         });
       } else {
-        // If only text fields are updated, send JSON
+        
         response = await fetch(`http://localhost:3001/movies/${id}`, {
           method: "PUT",
           headers: {
