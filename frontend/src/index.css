@@ -1,0 +1,24 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small helper for the wave image area */
+.app-bg {
+  background: linear-gradient(180deg, #0f3d44 0%, #0b2b31 52%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* bottom wave - optional; you can adjust or replace with an SVG image */
+.wave-svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  height: 220px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
