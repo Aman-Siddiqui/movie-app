@@ -9,11 +9,17 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex justify-between items-center px-8 py-4 bg-[#083344] text-white">
-      <h1 className="text-xl font-bold">My movies ☺️</h1>
+    <div className="flex justify-between items-center w-full max-w-5xl mb-6 px-8 py-4  text-white">
+     
+      <button
+          onClick={() => navigate("/create")}
+          className="px-6 py-3  rounded-md text-gray-300 hover:text-white transition"
+        >
+          My Movies  ➕
+        </button>
       <button
         onClick={handleLogout}
-        className="text-sm text-gray-300 hover:text-white"
+        className=" text-gray-300 hover:text-white"
       >
         Logout ⎋
       </button>
