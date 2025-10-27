@@ -29,7 +29,8 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0D3B45] text-white flex flex-col items-center p-6">
+   <div className="min-h-screen bg-[#0D3B45] text-white flex flex-col items-center px-6 py-6 sm:px-8 sm:py-8">
+
 
       
         <Navbar/>
@@ -38,7 +39,8 @@ const Movies = () => {
       {movies.length === 0 ? (
         <p className="text-gray-400">No movies available</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-8">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8">
+
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}

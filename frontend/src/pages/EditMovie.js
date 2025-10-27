@@ -88,17 +88,18 @@ const EditMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D3B45] flex items-center justify-center">
+    <div className="min-h-screen bg-[#0D3B45] flex items-center justify-center px-6 py-6 sm:px-8 sm:py-8">
+
       <div className="w-full max-w-4xl bg-transparent p-8 rounded-lg">
         <h1 className="text-2xl font-semibold text-white mb-8">Edit</h1>
 
         <form
           onSubmit={handleUpdate}
-          className="flex flex-col md:flex-row items-center md:items-start gap-8"
+          className="flex flex-col sm:flex-row sm:gap-8 items-center sm:items-start gap-6"
         >
           <label
             htmlFor="image-upload"
-            className="w-80 h-80 border-2 border-dashed border-gray-500 rounded-lg flex items-center justify-center cursor-pointer text-gray-300 hover:border-gray-300 transition relative"
+            className="w-full sm:w-80 h-64 sm:h-80 border-2 border-dashed border-gray-500 rounded-lg flex items-center justify-center cursor-pointer text-gray-300 hover:border-gray-300 transition relative"
           >
             {preview ? (
               <img
@@ -127,7 +128,7 @@ const EditMovie = () => {
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="bg-[#0B2F38] text-white placeholder-gray-400 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="bg-[#0B2F38] text-white placeholder-gray-400 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 w-full sm:w-auto"
             />
             <input
               type="text"
@@ -137,21 +138,22 @@ const EditMovie = () => {
               className="bg-[#0B2F38] text-white placeholder-gray-400 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
             />
 
-            <div className="flex gap-3 mt-4">
-              <button
-                type="button"
-                onClick={() => navigate("/movies")}
-                className="px-6 py-3 border border-gray-400 rounded-md text-white hover:bg-gray-700 transition"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-3 bg-green-500 rounded-md text-white hover:bg-green-600 transition"
-              >
-                Update
-              </button>
-            </div>
+           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-4">
+  <button
+    type="button"
+    onClick={() => navigate("/movies")}
+    className="px-6 py-3 border border-gray-400 rounded-md text-white hover:bg-gray-700 transition w-full sm:w-auto"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+    className="px-6 py-3 bg-green-500 rounded-md text-white hover:bg-green-600 transition w-full sm:w-auto"
+  >
+    Update
+  </button>
+</div>
+
           </div>
         </form>
       </div>

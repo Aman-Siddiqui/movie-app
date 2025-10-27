@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api, { setAuthToken } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,20 +44,20 @@ export default function Login() {
   }, []);
 
   return (
-    <div className="app-bg flex items-center justify-center min-h-screen">
-      <div className="absolute inset-0 pointer-events-none">
+    <div className="app-bg flex items-center justify-center min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
       
-        <div className="wave" />
+        <div className="wave w-full h-full" />
       </div>
 
-      <div className="w-full max-w-md p-8">
+      <div className="w-full max-w-md px-6 sm:px-8 py-6 relative z-10">
         <div className="bg-transparent flex flex-col items-center mb-6">
          
 
-          <h1 className="text-4xl text-white font-semibold mb-2">Sign in</h1>
+          <h1 className="text-3xl sm:text-4xl text-white font-semibold mb-2 text-center">Sign in</h1>
         </div>
 
-        <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur-md rounded-lg p-6 shadow-lg">
+        <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur-md rounded-lg p-4 sm:p-6 shadow-lg space-y-4">
           {error && (
             <div className="text-sm text-red-300 bg-red-900/30 p-2 rounded mb-4">{error}</div>
           )}
@@ -69,7 +69,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               required
-              className="w-full px-3 py-2 rounded bg-white/5 border border-white/5 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="w-full px-3 py-2 rounded-2xl bg-white/5 border border-white/5 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-green-400"
               placeholder="Email"
             />
           </div>
@@ -81,12 +81,12 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               required
-              className="w-full px-3 py-2 rounded bg-white/5 border border-white/5 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="w-full px-3 py-2 rounded-2xl bg-white/5 border border-white/5 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-green-400"
               placeholder="Password"
             />
           </div>
 
-          <div className="flex items-center justify-between text-sm text-white/80 my-4">
+          <div className="flex items-center justify-between text-sm text-white/80 my-2 sm:my-4">
             <label className="flex items-center gap-2">
               <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
               <span>Remember me</span>
@@ -97,7 +97,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 rounded bg-green-400 text-white font-semibold hover:bg-green-500 transition"
+            className="w-full py-2 sm:py-3  rounded-2xl bg-green-400 text-white font-semibold text-base sm:text-lg hover:bg-green-500 transition"
           >
             {loading ? 'Signing in...' : 'Login'}
           </button>
