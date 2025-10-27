@@ -157,6 +157,8 @@ const EditMovie = () => {
           </div>
         </form>
       </div>
+
+  
     </div>
   );
 };

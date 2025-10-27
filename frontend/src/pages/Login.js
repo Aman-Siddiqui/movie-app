@@ -14,19 +14,30 @@ export default function Login() {
     e.preventDefault();
     setError('');
     setLoading(true);
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email || !emailPattern.test(email)) {
+      setError('Please enter a valid email address.');
+      setLoading(false);
+      return;
+    }
+
+      if (!password || password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await api.post('/auth/login', { email, password });
       const token = res.data?.access_token;
+
       if (token) {
-       
         if (remember) localStorage.setItem('token', token);
         else sessionStorage.setItem('token', token);
 
-       
         setAuthToken(token);
-
-       
-        navigate('/movies'); 
+        navigate('/movies');
       } else {
         setError('Invalid server response');
       }
@@ -37,8 +48,7 @@ export default function Login() {
     }
   };
 
- 
-  React.useEffect(() => {
+  useEffect(() => {
     const t = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (t) setAuthToken(t);
   }, []);
@@ -46,14 +56,11 @@ export default function Login() {
   return (
     <div className="app-bg flex items-center justify-center min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      
         <div className="wave w-full h-full" />
       </div>
 
       <div className="w-full max-w-md px-6 sm:px-8 py-6 relative z-10">
         <div className="bg-transparent flex flex-col items-center mb-6">
-         
-
           <h1 className="text-3xl sm:text-4xl text-white font-semibold mb-2 text-center">Sign in</h1>
         </div>
 
@@ -97,7 +104,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 sm:py-3  rounded-2xl bg-green-400 text-white font-semibold text-base sm:text-lg hover:bg-green-500 transition"
+            className="w-full py-2 sm:py-3 rounded-2xl bg-green-400 text-white font-semibold text-base sm:text-lg hover:bg-green-500 transition"
           >
             {loading ? 'Signing in...' : 'Login'}
           </button>
@@ -105,9 +112,10 @@ export default function Login() {
       </div>
 
     
-{/* <svg className="wave-svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+ <svg className="wave-svg w-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
   <path fill="#15484f" fillOpacity="1" d="M0,224L48,224C96,224,192,224,288,186.7C384,149,480,75,576,64C672,53,768,107,864,106.7C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-</svg> */}
+</svg> 
+
 
     </div>
   );

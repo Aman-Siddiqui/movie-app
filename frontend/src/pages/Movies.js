@@ -47,6 +47,9 @@ const Movies = () => {
         </div>
       )}
       </div>
+
+
+       
     </div>
   );
 };
